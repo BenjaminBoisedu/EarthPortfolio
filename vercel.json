@@ -1,10 +1,12 @@
 {
   "cleanUrls": true,
-  "redirects": {
-    "index.html": "/",
-    "contact.html": "/contact",
-    "Dev.html": "/Dev",
-    "3D.html": "/3D",
-    "Astro.html": "/Astro"
-  }
+  "redirects": [
+    {
+      "index.html": "/",
+      "contact.html": "/contact",
+      "Dev.html": "/Dev",
+      "3D.html": "/3D",
+      "Astro.html": "/Astro"
+    }
+  ]
 }
