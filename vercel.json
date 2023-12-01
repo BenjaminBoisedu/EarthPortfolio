@@ -1,3 +1,30 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "homePage": "index.html",
+  "DevPage": "Dev.html",
+  "ContactPage": "Contact.html",
+  "AstroPage": "Astro.html",
+  "3DPage": "3D.html",
+  "rewrites": [
+    {
+      "source": "index.html",
+      "destination": "index.html"
+    },
+    {
+      "source": "Dev.html",
+      "destination": "Dev.html"
+    },
+    {
+      "source": "Contact.html",
+      "destination": "Contact.html"
+    },
+    {
+      "source": "Astro.html",
+      "destination": "Astro.html"
+    },
+    {
+      "source": "3D.html",
+      "destination": "3D.html"
+    }
+  ]
 }
