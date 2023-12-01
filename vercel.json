@@ -1,25 +1,10 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "index.html",
-      "destination": "index.html"
-    },
-    {
-      "source": "Dev.html",
-      "destination": "Dev.html"
-    },
-    {
-      "source": "Contact.html",
-      "destination": "Contact.html"
-    },
-    {
-      "source": "Astro.html",
-      "destination": "Astro.html"
-    },
-    {
-      "source": "3D.html",
-      "destination": "3D.html"
-    }
-  ]
+  "redirects": {
+    "index.html": "/",
+    "contact.html": "/contact",
+    "Dev.html": "/Dev",
+    "3D.html": "/3D",
+    "Astro.html": "/Astro"
+  }
 }
