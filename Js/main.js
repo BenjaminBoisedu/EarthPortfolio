@@ -39,12 +39,9 @@ window.addEventListener("resize", resisze);
 
 // Lights
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(ambientLight);
-
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
-scene.add(pointLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(0, 10, 0);
+scene.add(directionalLight);
 
 // Resize
 
@@ -128,6 +125,3 @@ window.addEventListener("scroll", () => {
     },
   });
 });
-
-const axishelper = new THREE.AxesHelper(100);
-scene.add(axishelper);
