@@ -49,7 +49,9 @@ scene.add(directionalLight);
 
 const SphereGeometry = new THREE.SphereGeometry(35, 64, 64);
 const SphereMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-SphereMaterial.map = new THREE.TextureLoader().load("Map-Planet/EarthMap.jpg");
+SphereMaterial.map = new THREE.TextureLoader().load(
+  "./Map-Planet/EarthMap.jpg"
+);
 SphereMaterial.bumpMap = new THREE.TextureLoader().load(
   "Map-Planet/EarthBump.jpg"
 );
