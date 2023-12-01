@@ -53,3 +53,43 @@ canvas {
     bottom: 0;
     width: 100%;
 }
+
+.content {
+    position: relative;
+    grid-column: 2 / span 10;
+    grid-row: 1
+}
+
+main .Nav {
+    position: fixed;
+    height: 100vh;
+    background-color: #24242450;
+    top: 0;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    grid-column: 1;
+}
+
+main .Nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .Nav ul li {
+    margin: 1rem 0;
+}
+
+main .Nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
