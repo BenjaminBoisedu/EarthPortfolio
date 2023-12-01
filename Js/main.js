@@ -53,6 +53,10 @@ const SphereGeometry = new THREE.SphereGeometry(35, 64, 64);
 const SphereMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
 SphereMaterial.map = new THREE.TextureLoader().load(EarthMap);
 SphereMaterial.bumpMap = new THREE.TextureLoader().load(EarthBump);
+SphereMaterial.bumpScale = 0.5;
+SphereMaterial.metalness = 0.5;
+SphereMaterial.roughness = 0.5;
+
 const Sphere = new THREE.Mesh(SphereGeometry, SphereMaterial);
 scene.add(Sphere);
 
