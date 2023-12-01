@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script type="module" src="/Js/main.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <title>Benjamin Boisedu</title>
 </head>
 
@@ -12,21 +15,61 @@
 
 
   <main>
-    <div class="Header">
 
-      <Header class="titre">
-        <h1>Bienvenue Voyageur</h1>
-      </Header>
-      <div class="Nav">
-        <nav>
-          <ul>
-            <li><a href="./Content/Dev.html" class="Dev">Developpement Web</a></li>
-            <li><a href="" class="3D">Réalisation 3D </a></li>
-            <li><a href="" class="Astro">Astrophotographie</a></li>
-            <li><a href="" class="Contact">Contact</a></li>
-            <li><a href="" class="Projet">Mes projets en cours</a></li>
-          </ul>
-        </nav>
+    <Header class="titre">
+      <h1>Bienvenue Voyageur</h1>
+      <a href="./Img/Cv.pdf" download="CV.pdf">
+        <ion-icon name="download-outline"></ion-icon>
+        Telecharger mon CV
+      </a>
+    </Header>
+    <div class="Nav">
+      <nav>
+        <ul>
+          <li><a href="./Content/Dev.html" class="Dev"><i>
+                <ion-icon name="code-slash-outline"></ion-icon>
+              </i></a></li>
+          <li><a href="" class="3D"><i>
+                <ion-icon name="cube-outline"></ion-icon>
+              </i> </a></li>
+          <li><a href="" class="Astro"><i>
+                <ion-icon name="planet-outline"></ion-icon>
+              </i></a></li>
+          <li><a href="" class="Contact"><i>
+                <ion-icon name="mail-outline"></ion-icon>
+              </i></a></li>
+          <li><a href="" class="Projet"><i>
+                <ion-icon name="folder-open-outline"></ion-icon>
+
+              </i></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="section1">
+      <div class="présentation">
+        <h2>Présentation</h2>
+        <p>Je suis Benjamin Boisedu, j'ai 20 ans et je suis actuellement en formation MMi à Lens en tant que <br>
+          Développeur Web et Designer 3D. <br>
+          Je suis passionné par le développement web et le design 3D. <br>
+          Je suis également passionné par l'astronomie et l'astrophysique. <br>
+          Je suis quelqu'un de très curieux et j'aime apprendre de nouvelles choses. <br>
+          Je suis également quelqu'un de très créatif et j'aime créer de nouvelles choses. <br>
+      </div>
+    </div>
+    <div class="img">
+      <img src="./Img/Photo.jpg" alt="Photo de moi" width="">
+    </div>
+    <div class="section2">
+      <div class="compétences">
+        <h2>Compétences</h2>
+        <p>
+          Je me suis orienté vers le back-end car j'aime beaucoup la logique et la résolution de problèmes. <br>
+          Je connais bien ph ainsi que Laravel mais j'utilise plus principalement ExpressJS avec Node . <br>
+          J'ai également des compétences en front-end. <br>
+          J'ai également des compétences en design 3D. <br>
+          J'utilise souvent Blender pour toutes mes réalisations 3D et ThreeJS pour les implémenter sur le web. <br>
+
+        </p>
       </div>
     </div>
   </main>

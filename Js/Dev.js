@@ -42,7 +42,7 @@ scene.add(Sphere);
 
 Sphere.position.z = 0;
 Sphere.position.setX(0);
-Sphere.position.y = 0;
+Sphere.position.y = -10;
 
 // Lights
 
@@ -85,3 +85,4 @@ Array(500).fill().forEach(addStar);
 // Controls
 
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;

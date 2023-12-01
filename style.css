@@ -12,6 +12,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #242424;
+  --color-secondary: #fff;
+  --color-tertiary: #242424;
+
 }
 
 
@@ -35,4 +45,90 @@ main {
   margin: 0px auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 300vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+main .Nav {
+  position: sticky;
+  height: 100vh;
+  background-color: #24242450;
+  top: 0;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+main .Nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .Nav ul li {
+  margin: 1rem 0;
+}
+
+main .Nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+main .titre {
+  grid-column: 6/ span 12;
+  grid-row: 1;
+}
+
+main .titre h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  /* text-align: center; */
+}
+
+main .section1 {
+  grid-column: 2/ span 5;
+  grid-row: 2;
+  margin-left: 2rem;
+}
+
+main .section1 .présentation h2 {
+  font-size: 6.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+main .section1 .présentation p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+main .img {
+  grid-column: 8/span12;
+  grid-row: 2;
+}
+
+main .img img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+main .section2 {
+  grid-column: 8/ span 5;
+  grid-row: 3;
+  margin-right: 2rem;
 }

@@ -24,8 +24,8 @@ camera.position.z = 0;
 camera.position.x = 10;
 camera.position.y = 0;
 
-const camhelper = new THREE.CameraHelper(camera);
-scene.add(camhelper);
+// const camhelper = new THREE.CameraHelper(camera);
+// scene.add(camhelper);
 
 renderer.render(scene, camera);
 
@@ -36,28 +36,43 @@ const resisze = () => {
 };
 
 window.addEventListener("resize", resisze);
+
+// Lights
+
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
 // Resize
 
-// Planet
+// Sphere
 
+const SphereGeometry = new THREE.SphereGeometry(35, 64, 64);
+const SphereMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+SphereMaterial.map = new THREE.TextureLoader().load("Map-Planet/EarthMap.jpg");
+SphereMaterial.bumpMap = new THREE.TextureLoader().load(
+  "Map-Planet/EarthBump.jpg"
+);
+const Sphere = new THREE.Mesh(SphereGeometry, SphereMaterial);
+scene.add(Sphere);
+
+Sphere.position.z = 0;
+Sphere.position.x = -30;
+Sphere.position.y = -17;
 function animate() {
   requestAnimationFrame(animate);
+
+  Sphere.rotation.y += 0.001;
+  Sphere.rotation.x += 0.001;
+  Sphere.rotation.z += 0.001;
 
   renderer.render(scene, camera);
 }
 
 animate();
-
-// Sphere
-
-const SphereGeometry = new THREE.SphereGeometry(15, 32, 32);
-const SphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-const Sphere = new THREE.Mesh(SphereGeometry, SphereMaterial);
-scene.add(Sphere);
-
-Sphere.position.z = 0;
-Sphere.position.x = 0;
-Sphere.position.y = 0;
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -77,9 +92,42 @@ Array(500).fill().forEach(addStar);
 // Controls
 
 const controls = new OrbitControls(camera, renderer.domElement);
-
+controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.5;
+controls.enableZoom = true;
+controls.enablePan = true;
+controls.enableKeys = true;
+controls.enableRotate = true;
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.screenSpacePanning = true;
+controls.minDistance = 10;
+controls.maxDistance = 100;
+controls.maxPolarAngle = Math.PI / 2;
 // Helpers
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
+
+window.addEventListener("scroll", () => {
+  let value = window.scrollY;
+  gsap.to(camera.position, {
+    x: 20,
+    y: value * 0.09,
+    z: value * 0.1,
+    duration: 1,
+    ease: "power2.out",
+    onComplete: () => {
+      console.log("done");
+    },
+    onUpdate: () => {
+      console.log("update");
+      camera.lookAt(scene.position);
+    },
+  });
+});
+
+const axishelper = new THREE.AxesHelper(100);
+scene.add(axishelper);
