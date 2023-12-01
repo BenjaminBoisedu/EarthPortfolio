@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import EarthMap from "../Map-Planet/EarthMap.jpg";
 import EarthBump from "../Map-Planet/BumpEarth.jpg";
+
 // Scene
 
 const scene = new THREE.Scene();
