@@ -93,3 +93,13 @@ Array(500).fill().forEach(addStar);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
+controls.rotateSpeed = 0.5;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.5;
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.enableRotate = false;
+controls.dampingFactor = 0.05;
+controls.minDistance = 10;
+controls.maxDistance = 20;
+controls.update();
