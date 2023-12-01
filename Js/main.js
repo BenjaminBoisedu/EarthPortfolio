@@ -3,6 +3,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import EarthMap from "../Map-Planet/EarthMap.jpg";
+import EarthBump from "../Map-Planet/BumpEarth.jpg";
 // Scene
 
 const scene = new THREE.Scene();
@@ -49,12 +51,8 @@ scene.add(directionalLight);
 
 const SphereGeometry = new THREE.SphereGeometry(35, 64, 64);
 const SphereMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-SphereMaterial.map = new THREE.TextureLoader().load(
-  "./Map-Planet/EarthMap.jpg"
-);
-SphereMaterial.bumpMap = new THREE.TextureLoader().load(
-  "Map-Planet/EarthBump.jpg"
-);
+SphereMaterial.map = new THREE.TextureLoader().load(EarthMap);
+SphereMaterial.bumpMap = new THREE.TextureLoader().load(EarthBump);
 const Sphere = new THREE.Mesh(SphereGeometry, SphereMaterial);
 scene.add(Sphere);
 
