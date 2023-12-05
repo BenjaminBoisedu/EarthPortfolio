@@ -115,10 +115,29 @@ controls.maxPolarAngle = Math.PI / 2;
 
 window.addEventListener("scroll", () => {
   let value = window.scrollY;
+  console.log(value);
   gsap.to(camera.position, {
     x: 20,
-    y: value * 0.09,
-    z: value * 0.1,
+    y: value * 0.02,
+    z: 20,
+    duration: 1,
+    ease: "power2.out",
+    onComplete: () => {
+      console.log("done");
+    },
+    onUpdate: () => {
+      console.log("update");
+      camera.lookAt(scene.position);
+    },
+  });
+});
+
+const Dev = document.querySelector(".Dev");
+Dev.addEventListener("click", () => {
+  gsap.to(camera.position, {
+    x: 50,
+    y: 0,
+    z: 15,
     duration: 1,
     ease: "power2.out",
     onComplete: () => {
