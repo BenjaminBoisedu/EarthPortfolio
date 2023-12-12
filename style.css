@@ -168,6 +168,34 @@ main .CompétencesImg #Three {
 
 #dev {
   grid-column: 8/ 13;
-  grid-row: 3;
-  margin-top: 40rem;
+  grid-row: 4;
+  /* margin-top: 40rem; */
+  margin-left: 5rem;
+}
+
+.img2 {
+  grid-row: 4;
+  grid-column: 2/7;
+  /* margin-left: 6rem; */
+  padding: 2rem;
+}
+
+.img2 img {
+  /* width: 50%; */
+  height: 50%;
+  object-fit: contain;
+}
+
+.D3 {
+  grid-row: 5;
+  grid-column: 3/7;
+}
+
+.img3 {
+  grid-column: 7/11;
+  grid-row: 5;
+}
+
+.img3 img {
+  width: 100%;
 }
