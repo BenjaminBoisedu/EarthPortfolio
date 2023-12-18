@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import EarthMap from "../Map-Planet/EarthMap.jpg";
 import EarthBump from "../Map-Planet/BumpEarth.jpg";
+import MoonMap from "../Map-Planet/Moon.jpg";
+import MoonBump from "../Map-Planet/BumpMoon.jpg";
 
 // Scene
 
@@ -64,6 +66,21 @@ scene.add(Sphere);
 Sphere.position.z = 0;
 Sphere.position.x = -30;
 Sphere.position.y = -17;
+
+const SphereGeometry2 = new THREE.SphereGeometry(2, 64, 64);
+const SphereMaterial2 = new THREE.MeshStandardMaterial({ color: 0xffffff });
+SphereMaterial2.map = new THREE.TextureLoader().load(MoonMap);
+SphereMaterial2.bumpMap = new THREE.TextureLoader().load(MoonBump);
+SphereMaterial2.bumpScale = 2;
+SphereMaterial2.roughness = 0.5;
+
+const Sphere2 = new THREE.Mesh(SphereGeometry2, SphereMaterial2);
+scene.add(Sphere2);
+
+Sphere2.position.z = 0;
+Sphere2.position.x = 15;
+Sphere2.position.y = 0;
+
 function animate() {
   requestAnimationFrame(animate);
 
