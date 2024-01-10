@@ -206,3 +206,335 @@ main .content {
   background-color: #ffffff98;
   color: #000;
 }
+
+main .content #about {
+  padding: 10px;
+  margin: 10px;
+  height: 30vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-bottom:
+    3px solid rgba(0, 0, 0, 0.75);
+
+}
+
+main .content #about h2 {
+  font-size: 4rem;
+  font-weight: 200;
+  margin-bottom: 10px;
+  padding: 0;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  writing-mode: vertical-lr;
+  rotate: 180deg;
+  border-right:
+    3px solid rgba(0, 0, 0, 0.75);
+}
+
+main .content #about p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding: 0;
+  line-height: 1;
+  color: #000;
+  text-align: center;
+}
+
+main .content .services {
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+main .content .services h2 {
+  font-size: 4rem;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  border-left:
+    3px solid rgba(0, 0, 0, 0.75);
+  writing-mode: sideways-lr;
+}
+
+
+main .content .services .products {
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+main .content .services .products .card {
+  width: 30%;
+  height: 50vh;
+  color: #000;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url(/Content/Img/Portfolio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+main .content .services .products .card:nth-child(2) {
+  background-image: url(/Content/Img/3D.png);
+}
+
+main .content .services .products .card:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  width: 50%;
+}
+
+main .content .services .products .card:hover h3 {
+  margin-top: 20rem;
+  transition: 0.5s;
+  width: fit-content;
+}
+
+
+main .content .services .products .card h3 {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom:
+    3px solid rgba(255, 255, 255, 0.75);
+  margin-top: 25rem;
+  background-color: white;
+  width: 25%;
+  transition: 0.5s;
+}
+
+#skills {
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  text-align: center;
+}
+
+#skills h2 {
+  font-size: 4rem;
+  font-weight: 200;
+  padding: 20px;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom:
+    3px solid rgba(0, 0, 0, 0.75);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+
+
+}
+
+.skills>div {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  margin: 10px;
+  height: 37vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.skills>div h3 {
+  font-size: 2rem;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1;
+  color: #000;
+  background-color: white;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom:
+    3px solid rgba(0, 0, 0, 0.75);
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 20rem;
+}
+
+
+
+.skill:nth-child(1) {
+  background-image: url(/Content/Img/HTML.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+
+.skill:nth-child(2) {
+  background-image: url(/Content/Img/CSS.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  padding: 10px;
+
+}
+
+.skill:nth-child(3) {
+  background-image: url(/Content/Img/JS.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(4) {
+  background-image: url(/Content/Img/PHP.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(5) {
+  background-image: url(/Content/Img/ThreeJS.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(6) {
+  background-image: url(/Content/Img/React.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(7) {
+  background-image: url(/Content/Img/Laravel.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(8) {
+  background-image: url(/Content/Img/Blender.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+}
+
+.skill:nth-child(9) {
+  background-image: url(/Content/Img/Node.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  filter: grayscale(100%);
+}
+
+.skill:hover {
+  filter: grayscale(0%);
+  transition: 0.5s;
+}
+
+#projects {
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  text-align: center;
+
+}
+
+#projects h2 {
+  font-size: 4rem;
+  font-weight: 200;
+  padding: 20px;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom:
+    3px solid rgba(0, 0, 0, 0.75);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.swiper {
+  width: 1200px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  margin: 10px;
+  height: fit-content;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -2,6 +2,7 @@ import "../style.css";
 import * as THREE from "three";
 import MoonMap from "../Map-Planet/Moon.jpg";
 import MoonBump from "../Map-Planet/BumpMoon.jpg";
+import gsap from "gsap";
 
 // Scene
 
@@ -40,7 +41,7 @@ window.addEventListener("resize", resisze);
 
 // Lights
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight.position.set(0, 10, 0);
 scene.add(directionalLight);
 
@@ -89,3 +90,79 @@ function addStar() {
 }
 
 Array(500).fill().forEach(addStar);
+
+const btn = document.querySelector(".btn-down");
+btn.addEventListener("click", () => {});
+
+const services = document.querySelector(".services");
+4;
+gsap.from(".services", { duration: 1, opacity: 0, y: -50, stagger: 0 });
+
+gsap.from(".btn-down", { duration: 1, opacity: 0, y: -50, stagger: 1 });
+
+gsap.from("nav", { duration: 1, opacity: 0, y: -50, stagger: 0.5, delay: 1 });
+
+window.addEventListener("scroll", () => {
+  let scroll = window.scrollY;
+  if (scroll > 100) {
+    gsap.to(".btn-down", { duration: 1, opacity: 0 });
+  } else {
+    gsap.to(".btn-down", { duration: 1, opacity: 1 });
+  }
+});
+
+gsap.fromTo(
+  "#about",
+  { x: -10, opacity: 0 },
+  { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 1 }
+);
+
+gsap.fromTo(
+  ".products",
+  { x: -10, opacity: 0 },
+  { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 2 }
+);
+
+gsap.fromTo(
+  ".services",
+  { x: -10, opacity: 0 },
+  { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 3 }
+);
+
+gsap.fromTo(
+  ".skill",
+  { x: -10, opacity: 0 },
+  { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 2 }
+);
+
+const swiper = new Swiper(".swiper", {
+  // Optional parameters
+  direction: "horizontal",
+  loop: true,
+  slidesPerView: 4,
+  spaceBetween: 30,
+  centeredSlides: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  freemode: true,
+
+  // If we need pagination
+  // Breakpoints
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 3,
+    },
+    480: {
+      slidesPerView: 3,
+    },
+    640: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+  },
+});
