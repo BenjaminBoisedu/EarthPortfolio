@@ -135,6 +135,12 @@ gsap.fromTo(
   { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 2 }
 );
 
+gsap.fromTo(
+  "#contact",
+  { x: -10, opacity: 0 },
+  { x: 0, duration: 1, opacity: 1, stagger: 0.5, delay: 1 }
+);
+
 const swiper = new Swiper(".swiper", {
   // Optional parameters
   direction: "horizontal",
