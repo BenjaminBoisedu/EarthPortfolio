@@ -1,10 +1,5 @@
 import "../style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import gsap from "gsap";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import EarthMap from "../Map-Planet/EarthMap.jpg";
-import EarthBump from "../Map-Planet/BumpEarth.jpg";
 import MoonMap from "../Map-Planet/Moon.jpg";
 import MoonBump from "../Map-Planet/BumpMoon.jpg";
 
@@ -25,9 +20,10 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 0;
-camera.position.x = 10;
-camera.position.y = 0;
+camera.position.z = -20;
+camera.position.x = 15;
+camera.position.y = -10;
+camera.rotation.y = 90;
 
 // const camhelper = new THREE.CameraHelper(camera);
 // scene.add(camhelper);
@@ -44,7 +40,7 @@ window.addEventListener("resize", resisze);
 
 // Lights
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
 directionalLight.position.set(0, 10, 0);
 scene.add(directionalLight);
 
@@ -52,11 +48,11 @@ scene.add(directionalLight);
 
 // Sphere
 
-const SphereGeometry = new THREE.SphereGeometry(35, 64, 64);
+const SphereGeometry = new THREE.SphereGeometry(35, 128, 128);
 const SphereMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-SphereMaterial.map = new THREE.TextureLoader().load(EarthMap);
-SphereMaterial.bumpMap = new THREE.TextureLoader().load(EarthBump);
-SphereMaterial.bumpScale = 0.5;
+SphereMaterial.map = new THREE.TextureLoader().load(MoonMap);
+SphereMaterial.bumpMap = new THREE.TextureLoader().load(MoonBump);
+SphereMaterial.bumpScale = 1;
 SphereMaterial.metalness = 0.5;
 SphereMaterial.roughness = 0.5;
 
@@ -66,20 +62,6 @@ scene.add(Sphere);
 Sphere.position.z = 0;
 Sphere.position.x = -30;
 Sphere.position.y = -17;
-
-const SphereGeometry2 = new THREE.SphereGeometry(2, 64, 64);
-const SphereMaterial2 = new THREE.MeshStandardMaterial({ color: 0xffffff });
-SphereMaterial2.map = new THREE.TextureLoader().load(MoonMap);
-SphereMaterial2.bumpMap = new THREE.TextureLoader().load(MoonBump);
-SphereMaterial2.bumpScale = 2;
-SphereMaterial2.roughness = 0.5;
-
-const Sphere2 = new THREE.Mesh(SphereGeometry2, SphereMaterial2);
-scene.add(Sphere2);
-
-Sphere2.position.z = 0;
-Sphere2.position.x = 15;
-Sphere2.position.y = 0;
 
 function animate() {
   requestAnimationFrame(animate);
@@ -107,62 +89,3 @@ function addStar() {
 }
 
 Array(500).fill().forEach(addStar);
-
-// Controls
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.5;
-controls.enableZoom = true;
-controls.enablePan = true;
-controls.enableKeys = true;
-controls.enableRotate = true;
-controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-controls.screenSpacePanning = true;
-controls.minDistance = 10;
-controls.maxDistance = 100;
-controls.maxPolarAngle = Math.PI / 2;
-// Helpers
-
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper);
-
-window.addEventListener("scroll", () => {
-  let value = window.scrollY;
-  console.log(value);
-  gsap.to(camera.position, {
-    x: 20,
-    y: value * 0.02,
-    z: 20,
-    duration: 1,
-    ease: "power2.out",
-    onComplete: () => {
-      console.log("done");
-    },
-    onUpdate: () => {
-      console.log("update");
-      camera.lookAt(scene.position);
-    },
-  });
-});
-
-const Dev = document.querySelector(".Dev");
-Dev.addEventListener("click", () => {
-  gsap.to(camera.position, {
-    x: 50,
-    y: 0,
-    z: 15,
-    duration: 1,
-    ease: "power2.out",
-    onComplete: () => {
-      console.log("done");
-    },
-    onUpdate: () => {
-      console.log("update");
-      camera.lookAt(scene.position);
-    },
-  });
-});
