@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 import * as THREE from "three";
 import gsap from "gsap";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -9,10 +9,10 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(
-  75,
+  65,
   window.innerWidth / window.innerHeight,
   0.1,
-  1000
+  100
 );
 
 const renderer = new THREE.WebGLRenderer({
@@ -46,12 +46,6 @@ pointLightBottom.position.set(0, -3, 0);
 const PointLightHelper = new THREE.PointLightHelper(pointLight, 1);
 scene.add(PointLightHelper);
 
-const GridHelper = new THREE.GridHelper(200, 50);
-scene.add(GridHelper);
-
-const axesHelper = new THREE.AxesHelper(5);
-scene.add(axesHelper);
-
 const path = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0, 1, 4),
   new THREE.Vector3(3, 1, 2),
@@ -62,7 +56,7 @@ const path = new THREE.CatmullRomCurve3([
 
 const points = path.getPoints(50);
 const geometry = new THREE.BufferGeometry().setFromPoints(points);
-const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+const material = new THREE.LineBasicMaterial({ color: 0x000000 });
 const curveObject = new THREE.Line(geometry, material);
 scene.add(curveObject);
 
@@ -77,41 +71,83 @@ const camPath = new THREE.CatmullRomCurve3([
   new THREE.Vector3(-3, 1, -2),
   new THREE.Vector3(-5, 1, 0),
   new THREE.Vector3(-3, 1, 2),
-  new THREE.Vector3(0, 1, 4),
+  new THREE.Vector3(0, 0, 4),
+  new THREE.Vector3(3, -1, 2),
+  new THREE.Vector3(5, -1, 0),
+  new THREE.Vector3(3, -1, -2),
+  new THREE.Vector3(0, -1, -4),
+  new THREE.Vector3(-3, -1, -2),
+  new THREE.Vector3(-5, -1, 0),
+  new THREE.Vector3(-3, 1, 2),
+  new THREE.Vector3(0, 2, 4),
+  new THREE.Vector3(3, 3, 2),
+  new THREE.Vector3(5, 3, 0),
+  new THREE.Vector3(3, 3, -2),
+  new THREE.Vector3(0, 3, -4),
+  new THREE.Vector3(-3, 3, -2),
 ]);
 
 const camPoints = camPath.getPoints(50);
 const camGeometry = new THREE.BufferGeometry().setFromPoints(camPoints);
-const camMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+const camMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
 const camObject = new THREE.Line(camGeometry, camMaterial);
 scene.add(camObject);
 
-const camHelper = new THREE.CameraHelper(camera);
-scene.add(camHelper);
-
-const lightShadow = new THREE.DirectionalLight(0xff0000, 10, 10, 2);
+const lightShadow = new THREE.DirectionalLight(0xe4e8ea, 10);
 lightShadow.position.set(3, -1, 1);
 lightShadow.castShadow = true;
+lightShadow.shadow.mapSize.width = 1024;
+lightShadow.shadow.mapSize.height = 1024;
+lightShadow.shadow.camera.far = 15;
+lightShadow.target.position.set(0, 1.2, 1);
 scene.add(lightShadow);
 
 const lightShadowHelper = new THREE.DirectionalLightHelper(lightShadow, 1);
 scene.add(lightShadowHelper);
 
-const lightShadow2 = new THREE.DirectionalLight(0x3461dd6a, 10, 10, 2);
+const lightShadow2 = new THREE.DirectionalLight(0xe4e8ea, 2);
 lightShadow2.position.set(-3, -1, 1);
 lightShadow2.castShadow = true;
 scene.add(lightShadow2);
 
+const lightShadowHelper2 = new THREE.DirectionalLightHelper(lightShadow2, 1);
+scene.add(lightShadowHelper2);
+
 let loader = new GLTFLoader();
 loader.load("scene.gltf", function (gltf) {
-  console.log(gltf);
   scene.add(gltf.scene);
-  gltf.scene.scale.set(10, 10, 10);
+  gltf.scene.scale.set(2, 2, 2);
   gltf.scene.position.x = 0;
   gltf.scene.position.y = 0;
   gltf.scene.position.z = 0;
   animate();
 });
+
+// Stars
+
+const starsGeometry = new THREE.BufferGeometry();
+const starsMaterial = new THREE.PointsMaterial({
+  color: 0xffffff,
+  size: 0.02,
+});
+
+const starsVertices = [];
+
+for (let i = 0; i < 1000; i++) {
+  const x = (Math.random() - 0.5) * 100;
+  const y = (Math.random() - 0.5) * 100;
+  const z = (Math.random() - 0.5) * 100;
+
+  starsVertices.push(x, y, z);
+}
+
+starsGeometry.setAttribute(
+  "position",
+  new THREE.Float32BufferAttribute(starsVertices, 3)
+);
+
+const stars = new THREE.Points(starsGeometry, starsMaterial);
+scene.add(stars);
 
 // const BoxGeometry = new THREE.BoxGeometry(2, 2, 2);
 // const BoxMaterial = new THREE.MeshLambertMaterial({
@@ -128,17 +164,14 @@ loader.load("scene.gltf", function (gltf) {
 // Box.position.z = 0;
 
 function UpdateCam() {
-  const time = performance.now() / 1000;
-  const looptime = 40;
+  const time = performance.now() / 500;
+  const looptime = 70;
   const t = (time % looptime) / looptime;
-  // const t2 = ((time + 0.1) % looptime) / looptime;
 
   const pos = camPath.getPointAt(t);
-  // const pos2 = camPath.getPointAt(t2);
-  camHelper.update();
 
   camera.position.copy(pos);
-  camera.lookAt(scene.position);
+  camera.lookAt(0, 1, 1.5);
 }
 function animate() {
   requestAnimationFrame(animate);

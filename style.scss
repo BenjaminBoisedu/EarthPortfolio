@@ -1,0 +1,30 @@
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+$colorText: #f0f0f0;
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $colorText;
+  background-color: #1a1a1a;
+}
+
+.container .main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container .main-nav ul li a {
+  color: $colorText;
+  text-decoration: none;
+}
+
+.container .main-nav ul li a:hover {
+  color: #f0f0f0;
+}
