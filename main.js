@@ -1,7 +1,6 @@
 import "./style.scss";
 import * as THREE from "three";
 import gsap from "gsap";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // Scene
 
@@ -19,12 +18,11 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
 });
 
-renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 2;
+camera.position.z = 4;
 camera.position.x = 0;
 camera.position.y = 1;
-camera.rotation.y = 45;
+// camera.rotation.y = 45;
 
 renderer.render(scene, camera, 0.1);
 
@@ -72,19 +70,7 @@ const camPath = new THREE.CatmullRomCurve3([
   new THREE.Vector3(-5, 1, 0),
   new THREE.Vector3(-3, 1, 2),
   new THREE.Vector3(0, 0, 4),
-  new THREE.Vector3(3, -1, 2),
-  new THREE.Vector3(5, -1, 0),
-  new THREE.Vector3(3, -1, -2),
-  new THREE.Vector3(0, -1, -4),
-  new THREE.Vector3(-3, -1, -2),
-  new THREE.Vector3(-5, -1, 0),
-  new THREE.Vector3(-3, 1, 2),
-  new THREE.Vector3(0, 2, 4),
-  new THREE.Vector3(3, 3, 2),
-  new THREE.Vector3(5, 3, 0),
-  new THREE.Vector3(3, 3, -2),
-  new THREE.Vector3(0, 3, -4),
-  new THREE.Vector3(-3, 3, -2),
+  new THREE.Vector3(-5, -10, 0),
 ]);
 
 const camPoints = camPath.getPoints(50);
@@ -122,6 +108,8 @@ loader.load("scene.gltf", function (gltf) {
   gltf.scene.position.z = 0;
   animate();
 });
+
+console.log(loader);
 
 // Stars
 
@@ -164,14 +152,13 @@ scene.add(stars);
 // Box.position.z = 0;
 
 function UpdateCam() {
-  const time = performance.now() / 500;
-  const looptime = 70;
-  const t = (time % looptime) / looptime;
-
-  const pos = camPath.getPointAt(t);
-
-  camera.position.copy(pos);
-  camera.lookAt(0, 1, 1.5);
+  window.addEventListener("scroll", () => {
+    const scroll = { y: window.scrollY };
+    const t = Math.min(Math.max(scroll.y / 2000, 0), 1);
+    const pos = camPath.getPointAt(t);
+    camera.position.copy(pos);
+    camera.lookAt(0, 1, 1.5);
+  });
 }
 function animate() {
   requestAnimationFrame(animate);
@@ -179,19 +166,9 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-animate();
-
-const scroll = {
-  y: window.scrollY,
-};
-
-const tl = gsap.timeline({
-  onUpdate: () => {
-    window.scrollTo(0, scroll.y);
-  },
-});
-
 window.addEventListener("scroll", () => {
   scroll.y = window.scrollY;
   UpdateCam();
 });
+
+animate();
