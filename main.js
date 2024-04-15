@@ -154,7 +154,7 @@ scene.add(stars);
 function UpdateCam() {
   window.addEventListener("scroll", () => {
     const scroll = { y: window.scrollY };
-    const t = Math.min(Math.max(scroll.y / 2000, 0), 1);
+    const t = Math.min(Math.max(scroll.y / 3000, 0), 1);
     const pos = camPath.getPointAt(t);
     camera.position.copy(pos);
     camera.lookAt(0, 1, 1.5);
