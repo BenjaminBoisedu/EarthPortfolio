@@ -70,7 +70,7 @@ const camPath = new THREE.CatmullRomCurve3([
   new THREE.Vector3(-5, 1, 0),
   new THREE.Vector3(-3, 1, 2),
   new THREE.Vector3(0, 0, 4),
-  new THREE.Vector3(-5, -10, 0),
+  new THREE.Vector3(-10, -10, 0),
 ]);
 
 const camPoints = camPath.getPoints(50);
@@ -137,20 +137,6 @@ starsGeometry.setAttribute(
 const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
-// const BoxGeometry = new THREE.BoxGeometry(2, 2, 2);
-// const BoxMaterial = new THREE.MeshLambertMaterial({
-//   color: 0xfffffff,
-//   side: THREE.DoubleSide,
-//   emissive: 0xffffff,
-//   emissiveIntensity: 0.8,
-//   shadowSide: THREE.DoubleSide,
-// });
-// const Box = new THREE.Mesh(BoxGeometry, BoxMaterial);
-// scene.add(Box);
-// Box.position.x = 0;
-// Box.position.y = -1;
-// Box.position.z = 0;
-
 function UpdateCam() {
   window.addEventListener("scroll", () => {
     const scroll = { y: window.scrollY };
@@ -172,3 +158,19 @@ window.addEventListener("scroll", () => {
 });
 
 animate();
+
+const btn = document.querySelector(".menu-btn");
+btn.addEventListener("click", () => {
+  if (document.querySelector(".main-nav").style.display === "block") {
+    document.querySelector(".main-nav").setAttribute("style", "display: none");
+  } else {
+    document.querySelector(".main-nav").setAttribute("style", "display: block");
+  }
+
+  const menu = document.querySelector(".menu-outline");
+  if (menu.name === "menu-outline") {
+    menu.setAttribute("name", "close-outline");
+  } else {
+    menu.setAttribute("name", "menu-outline");
+  }
+});

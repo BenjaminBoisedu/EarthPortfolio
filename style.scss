@@ -20,6 +20,41 @@ body {
   height: 200vh;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .menu-btn {
+  font-size: xx-large;
+}
+
+header .main-nav {
+  width: 100%;
+  padding: 20px 0;
+  margin: 10px;
+}
+
+header .main-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .main-nav ul li {
+  margin: 0 10px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px 0px;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -58,4 +93,38 @@ body {
 
 .container .main-nav ul li a:hover {
   color: #f0f0f0;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+  }
+
+  header .main-nav {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+
+  header .menu-btn {
+    font-size: x-large;
+  }
+
+  header .main-nav ul li {
+    margin: 0 5px;
+  }
+
+  main .name h1 {
+    font-size: 1.5rem;
+  }
 }
