@@ -41,9 +41,6 @@ scene.add(pointLight);
 const pointLightBottom = new THREE.PointLight(0xffffff, 70, 100, 2);
 pointLightBottom.position.set(0, -3, 0);
 
-const PointLightHelper = new THREE.PointLightHelper(pointLight, 1);
-scene.add(PointLightHelper);
-
 const path = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0, 1, 4),
   new THREE.Vector3(3, 1, 2),
@@ -88,16 +85,10 @@ lightShadow.shadow.camera.far = 15;
 lightShadow.target.position.set(0, 1.2, 1);
 scene.add(lightShadow);
 
-const lightShadowHelper = new THREE.DirectionalLightHelper(lightShadow, 1);
-scene.add(lightShadowHelper);
-
 const lightShadow2 = new THREE.DirectionalLight(0xe4e8ea, 2);
 lightShadow2.position.set(-3, -1, 1);
 lightShadow2.castShadow = true;
 scene.add(lightShadow2);
-
-const lightShadowHelper2 = new THREE.DirectionalLightHelper(lightShadow2, 1);
-scene.add(lightShadowHelper2);
 
 let loader = new GLTFLoader();
 loader.load("scene.gltf", function (gltf) {
