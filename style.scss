@@ -304,6 +304,83 @@ body {
     color: $colorText;
     cursor: pointer;
   }
+
+  main .contact button:active {
+    color: #151515;
+    background-color: $colorText;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: $colorText;
+    font-family: $fontFamily;
+  }
+
+  footer .network {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  footer .network .network-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  footer .network .network-icons ion-icon {
+    font-size: 1rem;
+    margin: 10px;
+  }
+
+  footer .Newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  footer .Newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  footer .Newsletter input {
+    font-size: 1rem;
+    text-align: center;
+    font-family: $fontFamily;
+    border: 1px solid $colorText;
+    background-color: #1a1a1a;
+    color: $colorText;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  footer .Newsletter button {
+    font-size: 1rem;
+    text-align: center;
+    font-family: $fontFamily;
+    border: 1px solid $colorText;
+    background-color: #1a1a1a;
+    color: $colorText;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  footer .map {
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
 }
 
 .part{
